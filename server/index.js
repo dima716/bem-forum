@@ -10,6 +10,7 @@ var fs = require('fs'),
     serveStatic = require('serve-static'),
     cookieSession = require('cookie-session'),
     slashes = require('connect-slashes'),
+    render = require('./render').render,
 
     passport = require('passport'),
     config = require('./config'),
@@ -33,7 +34,9 @@ app
     .use(slashes());
 // TODO: csrf, gzip
 
+
 app.use(router);
+app.use(errorHandler);
 
 if (isDev) {
     app.get('/error/', function() {
@@ -41,6 +44,13 @@ if (isDev) {
     });
 
     app.use(require('errorhandler')());
+}
+
+function errorHandler(err, req, res, next) {
+    console.log('errorHandler');
+    res.status(500);
+    render(req, res, { view: '500' });
+    next(err); // added this row because eslint says: error  'next' is defined but never used  no-unused-vars
 }
 
 isSocket && fs.existsSync(port) && fs.unlinkSync(port);

@@ -1,3 +1,12 @@
 block('page').mod('view', '404').content()(function() {
-    return '404';
+
+    return [
+        {
+            block: 'error-board'
+        },
+        {
+            block: 'issues'
+        }
+    ];
+
 });
