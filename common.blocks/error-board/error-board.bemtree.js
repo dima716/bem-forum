@@ -1,33 +1,36 @@
 block('error-board').content()(function() {
+    var block = this.block,
+        i18n = this.require('i18n');
+        console.log();
+
+
     return [
-        {
-            elem: 'logo'
-        },
         {
             elem: 'description',
             content:[
                 {
                     elem: 'title',
-                    tag: 'h1',
-                    content : 'Страница не найдена'
+                    content : i18n(block, 'pageNotFound')
                 },
                 {
                     elem: 'proposition',
                     content: [
-                        'Вы можете перейти на ',
+                        i18n(this.block, 'youCanGo'),
                         {
                             block: 'link',
                             url: '/',
-                            content : 'главную страницу.'
+                            content : i18n(this.block, 'homePage')
                         }
                     ]
                 }
             ]
         },
         {
-            elem: 'title',
-            tag: 'h2',
-            content : 'Публикации за последние 30 дней:'
+            elem: 'titleIssues',
+            content : i18n(this.block, 'latestIssues')
+        },
+        {
+            block: 'issues'
         }
     ]
 });

@@ -36,7 +36,7 @@ app
 
 
 app.use(router);
-app.use(errorHandler);
+
 
 if (isDev) {
     app.get('/error/', function() {
@@ -46,12 +46,14 @@ if (isDev) {
     app.use(require('errorhandler')());
 }
 
+app.use(errorHandler);
+
+/*eslint-disable no-unused-vars */
 function errorHandler(err, req, res, next) {
-    console.log('errorHandler');
     res.status(500);
     render(req, res, { view: '500' });
-    next(err); // added this row because eslint says: error  'next' is defined but never used  no-unused-vars
 }
+/*eslint-enable no-alert */
 
 isSocket && fs.existsSync(port) && fs.unlinkSync(port);
 

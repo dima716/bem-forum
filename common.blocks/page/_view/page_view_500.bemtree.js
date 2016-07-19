@@ -1,19 +1,25 @@
 block('page').mod('view', '500').content()(function() {
+    var block = this.block,
+    i18n = this.require('i18n');
 
-    var errorPage = `<!DOCTYPE html>
-                        <html>
-                        <head>
-                            <meta charset="UTF-8">
-                            <title>Internal Server Error</title>
-                        </head>
-
-                        <body style = 'font-family: Verdana, Arial; margin: 40px'>
-                            <h1>Внутреняя серверная ошибка</h1>
-                            <p>Извините, что-то пошло не так. Сервер не смог обработать Ваш запрос.</p>
-                            <p>Пожалуйста, попробуйте еще раз позже.</p>
-                        </body>
-                    </html>`
-
-    return errorPage;
-
+    return [
+        {
+            elem: 'wrapper',
+            attrs: { style: 'margin: 20px; font-family: Verdana, Arial;'},
+            content: [
+                {
+                    tag: 'h1',
+                    content : i18n(block, 'internalServerError')
+                },
+                {
+                    tag: 'p',
+                    content : i18n(block, 'sorrySomthingWrong')
+                },
+                {
+                    tag: 'p',
+                    content : i18n(block, 'tryLater')
+                }
+            ]
+        }
+    ];
 });

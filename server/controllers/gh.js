@@ -62,15 +62,12 @@ function getComments(req, res) {
     });
 }
 
-function notFoundPage(req, res){
+function get404 (req, res) {
     makeIssueRequest(issuesRequestUrl).then(function(issues) {
-        var latestIssues =  issues.filter(function(issue) {
-                                var tr = Math.abs(moment(issue.created_at).diff(moment(), 'days')) <= 30;
-                                return tr;
-                            });
+        var latestIssues = issues.slice(0, 10);
 
-    res.status(404);
-    res.send(render(req, res, {
+        res.status(404);
+        res.send(render(req, res, {
                 issues: latestIssues,
                 view: '404'
             }));
@@ -112,5 +109,5 @@ module.exports = {
     getIssues,
     getIssue,
     getComments,
-    notFoundPage
+    get404 
 };

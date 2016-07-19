@@ -1,6 +1,7 @@
 ({
     shouldDeps: 
         {
-            block: 'link'
+            block: 'link',
+            block: 'issues'
         }
 })

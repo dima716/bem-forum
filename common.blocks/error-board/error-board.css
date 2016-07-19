@@ -1,18 +1,8 @@
-.error-board{
-    font-family: Verdana, Arial; 
+.error-board {
+    font-family: Verdana, Arial;
+    margin: 15px;
 }
 
-
-.error-board__logo {
-    display: inline-block;
-    width: 200px;
-    height: 150px;
-    background: url('404_error.jpg') no-repeat;
-    margin: 0 40px 40px 0;
-}
-
-
-.error-board__description {
-    display: inline-block;
-    vertical-align: top;
+.error-board__titleIssues {
+    margin-top: 80px;
 }

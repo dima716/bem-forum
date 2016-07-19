@@ -1,5 +1,3 @@
 ({
-    shouldDeps: [
-        'error-board'
-    ]
+    shouldDeps: ['error-board']
 })

@@ -40,15 +40,15 @@ block('issue').content()(function() {
             elem: 'content',
             content: issue.html
         },
-        this.data.url.pathname.match(/^\/\d+\/$/g) !== null ? {
-            block: 'comments'
-        } : {
+        this.data.url.pathname === '/' || this.data.view === '404' ? {
             block: 'button',
             mods: { theme: 'islands', size: 'm', type: 'link', view: 'pseudo' },
             mix: { block: 'issue', elem: 'comments-button' },
             js: { number: issue.number },
             url: '/' + issue.number + '/',
             text: issue.comments ? 'Ответов: ' + issue.comments : 'Ответить'
+        } : {
+           block: 'comments'
         }
     ];
 });
